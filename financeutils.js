@@ -55,6 +55,7 @@ FinanceUtils.prototype = {
 		var au = new ArrayUtil();
 
 		// check for OTC mailbox
+		// OTC is the Order to Cash mailbox
 		var otcEmailString = gs.getProperty('finance.emails.otc', '');
 		var otcEmailArray = [];
 		if(JSUtil.notNil(otcEmailString)) {
@@ -67,6 +68,7 @@ FinanceUtils.prototype = {
 		}
 
 		// check for PTP mailbox
+		// PTP is the Purchase to Pay mailboxes
 		var ptpEmailString = gs.getProperty('finance.emails.ptp', '');
 		var ptpEmailArray = [];
 		if(JSUtil.notNil(ptpEmailString)) {
