@@ -1,7 +1,15 @@
+//***********************************************************
+//Assumptions:
+//1. assigning current.group the value 'aargon' will route the
+//   email to the correct group.
+//2. I don't need to change the recipient of the email at all 
+//***********************************************************
+
 var finutils = new FinanceUtils();
 var mailbox = finutils.getFinanceMailbox(email.recipients);
 var frombox = email.origemail.toLowerCase();
-gs.info("Frombox: " + frombox);
+var 
+gs.info("Frombox: " + frombox); //Is this reading or writing?
 // gs.info('Mailbox info: ' + mailbox);
 
 var user = getUser();
@@ -17,11 +25,7 @@ if(mailbox && mailbox != '') {
 	current.u_source_mailbox = mailbox;
 	current.u_from_mailbox = frombox;
 	current.u_ticket_type = finutils.getTicketType(mailbox);
-	//simple solution first, TODO: add list of addresses that require routing
-	//check to see if this email comes from aagron
-	if(frombox == 'aagron@seatoncorp.com') { 
-		current.group = 'aargon'; //assign to the Argon group
-	}
+	route(frombox); //if email needs routing to group, send it there, if not, do nothing
 	
 	current.insert();
 }
@@ -30,4 +34,16 @@ function getUser() {
 	var usergr = new GlideRecord('sys_user');
 	usergr.get(gs.getUserID());
 	return usergr;
+}
+
+//decided to throw it all in a function.  This will allow
+//any changes made in the future to be a bit easier to make.
+function route(frombox) {
+	switch(frombox) {
+		case 'aagron@seatoncorp.com':
+			current.group = 'aargon'; //current should be in scope here
+			break;
+		default:
+			
+	}
 }
