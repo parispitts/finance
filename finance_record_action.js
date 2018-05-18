@@ -17,6 +17,12 @@ if(mailbox && mailbox != '') {
 	current.u_source_mailbox = mailbox;
 	current.u_from_mailbox = frombox;
 	current.u_ticket_type = finutils.getTicketType(mailbox);
+	//simple solution first, TODO: add list of addresses that require routing
+	//check to see if this email comes from aagron
+	if(frombox == 'aagron@seatoncorp.com') { 
+		current.group = 'aargon'; //assign to the Argon group
+	}
+	
 	current.insert();
 }
 
