@@ -2,7 +2,9 @@
 //Assumptions:
 //1. assigning current.group the value 'aargon' will route the
 //   email to the correct group.
-//2. I don't need to change the recipient of the email at all 
+//2. I don't need to change the recipient of the email at all
+//3. I can't really test this, so I'll cross my fingers and
+//   hope it works/compiles 
 //***********************************************************
 
 var finutils = new FinanceUtils();
